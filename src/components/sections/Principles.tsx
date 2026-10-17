@@ -9,7 +9,7 @@ export function Principles() {
       <div className="container">
         <SectionHeader
           id="principles-title"
-          index="04"
+          index="05"
           label="How I work"
           title="Principles I can point to in shipped code."
         />

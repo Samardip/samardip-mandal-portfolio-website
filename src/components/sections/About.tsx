@@ -6,7 +6,7 @@ export function About() {
   return (
     <section id="about" className={styles.section} aria-labelledby="about-title">
       <div className="container">
-        <SectionHeader id="about-title" index="06" label="About" title="The short version." />
+        <SectionHeader id="about-title" index="07" label="About" title="The short version." />
         <div className={styles.about}>
           <div className={styles.aboutText}>
             <p>

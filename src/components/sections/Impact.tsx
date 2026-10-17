@@ -9,12 +9,39 @@ const attributionLabel: Record<Attribution, string> = {
   product: "Product-level",
 };
 
-function MetricCard({ metric, variant }: { metric: Metric; variant?: "reach" }) {
+function Bars({ bars }: { bars: NonNullable<Metric["bars"]> }) {
+  const max = Math.max(...bars.map((bar) => bar.value));
   return (
-    <li className={variant === "reach" ? styles.reachCard : styles.metric}>
-      <p className={styles.metricValue}>{metric.value}</p>
-      <p className={styles.metricLabel}>{metric.label}</p>
+    <ul className={styles.bars} role="list">
+      {bars.map((bar) => (
+        <li key={bar.label}>
+          <span className={styles.barLabel}>{bar.label}</span>
+          <span className={styles.barTrack} aria-hidden="true">
+            <span className={styles.barFill} style={{ width: `${(bar.value / max) * 100}%` }} />
+          </span>
+          <span className={styles.barValue}>{bar.display}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Tile({ metric, className }: { metric: Metric; className?: string }) {
+  return (
+    <li className={[styles.tile, className].filter(Boolean).join(" ")}>
+      <div className={styles.tileHead}>
+        <p className={styles.metricValue}>{metric.value}</p>
+        <p className={styles.metricLabel}>{metric.label}</p>
+      </div>
       <p className={styles.metricDetail}>{metric.detail}</p>
+      {metric.bars ? <Bars bars={metric.bars} /> : null}
+      {metric.chips ? (
+        <ul className={styles.metricChips} role="list">
+          {metric.chips.map((chip) => (
+            <li key={chip}>{chip}</li>
+          ))}
+        </ul>
+      ) : null}
       <p className={styles.metricSource}>
         <span className={styles.attribution} data-kind={metric.attribution}>
           {attributionLabel[metric.attribution]}
@@ -26,6 +53,8 @@ function MetricCard({ metric, variant }: { metric: Metric; variant?: "reach" }) 
 }
 
 export function Impact() {
+  const [feature, ...rest] = metrics;
+
   return (
     <section id="impact" className={styles.section} aria-labelledby="impact-title">
       <div className="container">
@@ -37,9 +66,10 @@ export function Impact() {
           intro="Every number below is either something I measured or clearly marked as a product-level figure reported by the company. I don't present product-wide outcomes as my individual result."
         />
 
-        <ul className={styles.metrics} role="list">
-          {metrics.map((metric) => (
-            <MetricCard key={metric.label} metric={metric} />
+        <ul className={styles.bento} role="list">
+          <Tile metric={feature} className={styles.tileFeature} />
+          {rest.map((metric) => (
+            <Tile key={metric.label} metric={metric} />
           ))}
         </ul>
 
@@ -53,7 +83,7 @@ export function Impact() {
           </div>
           <ul className={styles.reachList} role="list">
             {productReach.map((metric) => (
-              <MetricCard key={metric.label} metric={metric} variant="reach" />
+              <Tile key={metric.label} metric={metric} className={styles.tileReach} />
             ))}
           </ul>
         </div>

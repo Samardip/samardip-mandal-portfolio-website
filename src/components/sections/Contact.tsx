@@ -5,7 +5,7 @@ import styles from "./sections.module.css";
 
 type Props = { headingLevel?: "h2" | "h3"; index?: string };
 
-export function Contact({ headingLevel = "h2", index = "07" }: Props) {
+export function Contact({ headingLevel = "h2", index = "08" }: Props) {
   const Heading = headingLevel;
   return (
     <section id="contact" className={styles.contact} aria-labelledby="contact-title">

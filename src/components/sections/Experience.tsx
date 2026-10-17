@@ -8,7 +8,7 @@ export function Experience() {
       <div className="container">
         <SectionHeader
           id="experience-title"
-          index="05"
+          index="06"
           label="Experience"
           title="From a single editor to frontends across five products."
           intro="Four years at product companies where frontend engineers own whole features."

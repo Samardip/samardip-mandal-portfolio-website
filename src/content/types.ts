@@ -68,4 +68,6 @@ export type Metric = {
   detail: string;
   attribution: Attribution;
   source: string;
+  bars?: { label: string; value: number; display: string }[];
+  chips?: string[];
 };

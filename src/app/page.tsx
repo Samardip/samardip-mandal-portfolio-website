@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Impact } from "@/components/sections/Impact";
 import { Principles } from "@/components/sections/Principles";
 import { SelectedWork } from "@/components/sections/SelectedWork";
+import { Skills } from "@/components/sections/Skills";
 import { profile } from "@/content/profile";
 import { siteUrl } from "@/lib/site";
 
@@ -33,6 +34,7 @@ export default function HomePage() {
       <SelectedWork />
       <Impact />
       <Expertise />
+      <Skills />
       <Principles />
       <Experience />
       <About />

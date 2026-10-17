@@ -7,20 +7,26 @@ export const metrics: Metric[] = [
     detail: "The only code that runs on a partner's page until a visitor opens the widget. It's 26.3 KB minified.",
     attribution: "team",
     source: "Measured from a production build, Oct 2026",
+    bars: [
+      { label: "Minified", value: 26.3, display: "26.3 KB" },
+      { label: "Gzipped", value: 9, display: "~9 KB" },
+    ],
   },
   {
     value: "5",
     label: "Products shipped at Styldod",
-    detail: "Smart Media Module, the REimagineHome core app, Embed SDK, DormTok and Room Studio, all since January 2025.",
+    detail: "All since January 2025, including two apps I set up from scratch.",
     attribution: "individual",
     source: "From commit history",
+    chips: ["Smart Media Module", "REimagineHome core app", "Embed SDK", "DormTok", "Room Studio"],
   },
   {
     value: "5",
     label: "Widget locales",
-    detail: "en-US, en-GB, de, es-ES and pl-PL. Only the requested locale is downloaded, and en-US is the inline fallback.",
+    detail: "Only the requested locale is downloaded, and en-US is the inline fallback.",
     attribution: "individual",
     source: "From the widget source",
+    chips: ["en-US", "en-GB", "de", "es-ES", "pl-PL"],
   },
   {
     value: "8",
@@ -118,6 +124,63 @@ export const expertise: ExpertiseArea[] = [
       "Sentry triage and noise filtering, polyfills for older browsers, handling mislabelled image formats, and product analytics instrumentation.",
     tools: ["Sentry", "PostHog", "Google Tag Manager", "Clarity"],
     evidence: { label: "Real devices", href: "/work/ai-design-studio#reliability" },
+  },
+];
+
+export type SkillGroup = { title: string; skills: string[] };
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "Languages",
+    skills: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
+  },
+  {
+    title: "Frameworks",
+    skills: ["React", "Next.js (App Router)", "Preact", "React Native"],
+  },
+  {
+    title: "Styling and UI",
+    skills: ["Material UI", "Emotion", "SCSS", "Tailwind CSS", "CSS Modules", "Responsive, mobile-first UI"],
+  },
+  {
+    title: "State and data",
+    skills: [
+      "Redux Toolkit",
+      "React Query (TanStack Query)",
+      "RxJS",
+      "REST",
+      "GraphQL (Apollo Client)",
+      "WebSockets",
+      "Polling and long polling",
+    ],
+  },
+  {
+    title: "3D and graphics",
+    skills: ["Three.js", "A-Frame"],
+  },
+  {
+    title: "SDKs and platform",
+    skills: [
+      "iframe SDKs",
+      "postMessage",
+      "Multi-tenant white-label config",
+      "i18n (next-intl)",
+      "npm workspaces",
+      "Code splitting",
+      "PWA",
+    ],
+  },
+  {
+    title: "Build and deploy",
+    skills: ["Vite", "esbuild", "tsup", "Rollup", "Vercel", "Git"],
+  },
+  {
+    title: "Observability and analytics",
+    skills: ["Sentry", "PostHog", "Google Tag Manager", "Microsoft Clarity"],
+  },
+  {
+    title: "Auth and payments",
+    skills: ["AWS Cognito", "Paddle", "Cloudflare Turnstile", "Firebase push notifications"],
   },
 ];
 

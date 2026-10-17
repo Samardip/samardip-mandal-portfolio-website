@@ -15,14 +15,25 @@ export function Expertise() {
           intro="No skill bars. Every area links to the project that shows it."
         />
         <ul className={styles.expertise} role="list">
-          {expertise.map((area) => (
+          {expertise.map((area, i) => (
             <li key={area.title} className={styles.area}>
+              <p className={styles.areaIndex}>{String(i + 1).padStart(2, "0")}</p>
               <h3 className={styles.areaTitle}>{area.title}</h3>
               <p className={styles.areaSummary}>{area.summary}</p>
-              <p className={styles.areaTools}>{area.tools.join(" · ")}</p>
+              <ul className={styles.areaTools} role="list" aria-label="Tools">
+                {area.tools.map((tool) => (
+                  <li key={tool}>{tool}</li>
+                ))}
+              </ul>
               <Link href={area.evidence.href} className={styles.areaEvidence}>
-                <span className="visually-hidden">{area.title}: </span>
-                Evidence: {area.evidence.label} <span aria-hidden="true">→</span>
+                <span className={styles.areaEvidenceLabel}>Evidence</span>
+                <span className={styles.areaEvidenceTarget}>
+                  <span className="visually-hidden">{area.title}: </span>
+                  {area.evidence.label}
+                  <span className={styles.areaArrow} aria-hidden="true">
+                    →
+                  </span>
+                </span>
               </Link>
             </li>
           ))}
