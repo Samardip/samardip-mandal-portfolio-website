@@ -1,0 +1,114 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[top=0.8cm,bottom=0.8cm,left=1.15cm,right=1.15cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setcounter{secnumdepth}{0}
+
+\titleformat{\section}{\bfseries\normalsize}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{5pt}{2pt}
+
+\setlist[itemize]{leftmargin=1.1em,itemsep=1.2pt,topsep=2pt,parsep=0pt,label=$\circ$}
+
+\newcommand{\sep}{\enspace\textbar\enspace}
+
+\begin{document}
+
+% ==================== HEADER ====================
+\begin{center}
+  {\LARGE\textbf{Samardip Mandal}}\\[3pt]
+  \textbf{Frontend Engineer} \sep React \textperiodcentered{} Next.js \textperiodcentered{} TypeScript \sep
+  Embeddable SDKs, Real-time AI Interfaces \& 3D\\[3pt]
+  {\small Bengaluru, India \sep
+  \href{mailto:samardipmandal.kgp@gmail.com}{samardipmandal.kgp@gmail.com} \sep
+  +91 7364923708 \sep
+  \href{https://github.com/Samardip}{github.com/Samardip} \sep
+  \href{https://linkedin.com/in/samardipmandal}{linkedin.com/in/samardipmandal}}
+\end{center}
+
+% ==================== SUMMARY ====================
+\section{Summary}
+Frontend engineer with 4 years of experience in React, Next.js and TypeScript; currently Member of Technical Staff
+at Styldod, promoted from SDE I. Built the frontend of REimagineHome's multi-tenant, embeddable AI widget SDK
+(\textbf{3M+ AI generations}), used by real-estate portals including Otodom, and ship core features of
+\textbf{REimagineHome}, an AI interior-design app with \textbf{2M+ users}, from real-time AI streaming interfaces to
+Three.js 3D room views.
+
+% ==================== SKILLS ====================
+\section{Skills}
+\textbf{Languages \& Frameworks:} TypeScript, JavaScript (ES6+), React.js, Next.js, Preact, HTML5, CSS3\\
+\textbf{State \& Data:} Redux Toolkit, React Query (TanStack Query), RxJS, REST, GraphQL (Apollo Client), WebSockets\\
+\textbf{UI \& Graphics:} Material UI, Emotion, SCSS, Tailwind CSS, Three.js, responsive and mobile-first UI\\
+\textbf{SDK \& Platform:} iframe SDKs, postMessage, multi-tenant white-label config, i18n (next-intl), npm workspaces\\
+\textbf{Build \& Production:} Vite, esbuild/tsup, Rollup, Sentry, PostHog, Google Tag Manager, AWS Cognito, Paddle, Vercel, Git
+
+% ==================== EXPERIENCE ====================
+\section{Experience}
+
+\textbf{Styldod Inc} \sep Bengaluru \hfill \textbf{Jan 2025 -- Present}\\
+\textbf{Member of Technical Staff -- Frontend} \textit{(promoted from Software Development Engineer I)}
+\begin{itemize}
+  \item \textbf{Embed SDK:} Built the frontend of REimagineHome Embed, a white-label AI virtual-staging widget that
+        partners add with one script tag: a \textbf{$\sim$9\,KB gzipped} loader (tsup/esbuild) that opens a
+        Preact + Vite iframe app.
+  \item Designed the \textbf{multi-tenant UI architecture}: one shared logic layer with per-tenant UI modules
+        (default, \href{https://otodom-reimagine-widget.vercel.app/listing/property-4}{Otodom}) lazy-loaded by
+        org slug; branding, fonts, sections and feature flags (uploads, history, analytics) merge from org config and
+        host overrides, so partners are configured, not forked.
+  \item Wrote the typed host--iframe \textbf{postMessage protocol} (init, theme, close, destroy, CTA actions, errors)
+        with origin and source checks on both sides, plus publishable-key sessions limited to allowlisted domains.
+  \item Shipped \textbf{i18n in 5 locales} (en-US, en-GB, de, es-ES, pl-PL) loaded on demand, real-time generation
+        status over WebSockets, and event analytics sent with \texttt{fetch} keepalive so events survive widget teardown.
+  \item \textbf{REimagineHome 2.0} (Next.js, Redux Toolkit, React Query, RxJS), the core app with \textbf{2M+ users}:
+        built the streaming ``thinking'' interface that shows the AI agent's reasoning step by step and persists across
+        reloads, the chat-driven design flow with shoppable product bundles, and live WebSocket reconnection status.
+  \item Built the AI photo \textbf{quality-check flow}: quality report, per-photo flags, and a batch ``Fix all''
+        pipeline with polling, credit checks and processing states; shipped new pricing tiers on Paddle with
+        Cloudflare Turnstile.
+  \item Improved production reliability: filtered browser noise in Sentry with \texttt{beforeSend} and fixed the
+        surfaced errors, recovered HEIC photos mislabelled as JPEG, and added polyfills for older browsers.
+  \item \textbf{Photos-to-3D} (Next.js, TypeScript, Three.js): set up the app, Cognito sign-in, the room-to-3D job
+        pipeline (API client, Redux slice, WebSocket routing) and a dollhouse camera that fades walls blocking the view.
+  \item \textbf{\href{https://dormtok.reimaginehome.ai}{DormTok}} (Next.js, React Query, Redux), a social platform for
+        AI room-makeover videos: bootstrapped the app and built upload, credits and WebSocket integration, Cognito
+        route guards with token refresh, a registry flow with Amazon and Walmart checkout, and an internal analytics
+        dashboard.
+  \item \textbf{Smart Media Module} (Next.js, Redux, GraphQL): built the listing-photo compliance editor with a
+        draw/erase mask toolbar, generation-workflow state management, and a long-polling fallback for WebSocket
+        media updates.
+  \item Lead frontend architecture and code reviews across these products, and mentor engineers on the team.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{Global IDs} \sep Kolkata \hfill \textbf{Jun 2023 -- Dec 2024}\\
+\textbf{Software Developer}
+\begin{itemize}
+  \item Built responsive production web applications and complex UI workflows in React.js, JavaScript, HTML5 and CSS3.
+  \item Refactored legacy frontend modules into reusable React components, removing duplicated UI code and fixing
+        rendering bottlenecks through better component structure and state management.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{Tale Wallet} \sep Bengaluru \hfill \textbf{Sep 2022 -- May 2023}\\
+\textbf{Associate Software Engineer}
+\begin{itemize}
+  \item Built the React frontend of a cryptocurrency wallet: reusable components, application state management and
+        backend API integration, with real-time rendering of wallet data.
+\end{itemize}
+
+% ==================== EDUCATION ====================
+\section{Education}
+\textbf{B.Tech, Computer Science and Engineering} \sep CGPA 8.98/10 \hfill \textbf{Aug 2018 -- Jun 2022}\\
+RCC Institute of Information Technology, Kolkata
+
+% ==================== ACHIEVEMENTS ====================
+\section{Achievements}
+\textbf{CodeChef:} 4$\star$ (max rating 1803) \sep \textbf{Google Code Jam 2021:} Qualified
+
+\end{document}

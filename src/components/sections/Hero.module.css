@@ -1,0 +1,143 @@
+.hero {
+  padding-block: clamp(2.5rem, 2rem + 4vw, 5.5rem) var(--space-8);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.main {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--step-5);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  max-width: 21ch;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--accent-ink);
+}
+
+.lede {
+  max-width: 58ch;
+  font-size: var(--step-1);
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.index {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ink);
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--rule);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.facts dd {
+  font-size: 0.95rem;
+}
+
+.focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.focus span {
+  padding: 1px 8px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.work {
+  display: grid;
+}
+
+.work a {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: color 150ms var(--ease-out);
+}
+
+.work a:hover .workName {
+  color: var(--accent-ink);
+}
+
+.workIndex {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.workName {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.workMeta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: var(--space-8);
+  }
+
+  .index {
+    margin-top: 2.6rem;
+  }
+}

@@ -1,0 +1,25 @@
+.button {
+  min-width: 4.75rem;
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--night-ink-2);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--night-ink);
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    border-color 150ms var(--ease-out),
+    color 150ms var(--ease-out);
+}
+
+.button:hover {
+  border-color: var(--night-accent);
+  color: var(--night-accent);
+}
+
+.button:focus-visible {
+  outline-color: var(--night-accent);
+}

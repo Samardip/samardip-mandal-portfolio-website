@@ -1,0 +1,532 @@
+/* ---------- SVG diagrams with a list fallback on small screens ---------- */
+.svgFigure {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.svgAlways {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.zone {
+  fill: var(--paper);
+  stroke: var(--rule-strong);
+  stroke-dasharray: 4 4;
+}
+
+.zoneAccent {
+  fill: color-mix(in srgb, var(--accent-soft) 45%, var(--paper));
+  stroke: var(--accent);
+  stroke-dasharray: 4 4;
+}
+
+.zoneLabel,
+.zoneLabelAccent {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: var(--ink-3);
+}
+
+.zoneLabelAccent {
+  fill: var(--accent-ink);
+}
+
+.node {
+  fill: #fff;
+  stroke: var(--rule-strong);
+}
+
+.nodeStrong {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+}
+
+.inner {
+  fill: var(--paper);
+  stroke: var(--rule);
+}
+
+.innerAccent {
+  fill: color-mix(in srgb, var(--accent-soft) 60%, #fff);
+  stroke: color-mix(in srgb, var(--accent) 50%, var(--rule));
+}
+
+.nodeTitle {
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.nodeText {
+  font-size: 13.5px;
+  fill: var(--ink);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ink-3);
+}
+
+.edge,
+.edgeAccent {
+  stroke: var(--ink);
+  stroke-width: 1.4;
+}
+
+.edgeAccent {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.edgeLabel,
+.edgeLabelAccent {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ink-2);
+}
+
+.edgeLabelAccent {
+  fill: var(--accent-ink);
+}
+
+.flowList {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.flowList li {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.flowIndex {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-ink);
+}
+
+@media (max-width: 719px) {
+  .svg {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .flowList {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+/* ---------- Sequence diagram ---------- */
+.sequence {
+  --lane-gap: var(--space-3);
+  position: relative;
+  font-size: 0.85rem;
+}
+
+.lanes,
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--lane-gap);
+}
+
+.lanes {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--ink);
+}
+
+.laneHead {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.steps {
+  position: relative;
+  list-style: none;
+  padding: var(--space-4) 0 var(--space-2);
+  margin: 0;
+  row-gap: var(--space-3);
+  background-image:
+    linear-gradient(var(--rule-strong), var(--rule-strong)),
+    linear-gradient(var(--rule-strong), var(--rule-strong)),
+    linear-gradient(var(--rule-strong), var(--rule-strong));
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  background-position:
+    calc((100% - 2 * var(--lane-gap)) / 6) 0,
+    50% 0,
+    calc(100% - (100% - 2 * var(--lane-gap)) / 6) 0;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding-inline: calc((100% - (var(--span, 1) - 1) * var(--lane-gap)) / var(--span, 1) / 2);
+  text-align: center;
+}
+
+.stepLabel {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--ink-2);
+  background: var(--paper);
+  justify-self: center;
+  padding-inline: 4px;
+}
+
+.step[data-accent] .stepLabel {
+  color: var(--accent-ink);
+}
+
+.stepLine {
+  position: relative;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+.step[data-accent] .stepLine {
+  background: var(--accent);
+}
+
+.stepLine::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+  color: var(--ink);
+}
+
+.step[data-accent] .stepLine::after {
+  color: var(--accent);
+}
+
+.step[data-reverse] .stepLine::after {
+  right: auto;
+  left: -1px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.step[data-self] {
+  padding-inline: 0;
+}
+
+.step[data-self] .stepLine {
+  width: 26px;
+  height: 14px;
+  justify-self: center;
+  background: none;
+  border: 1.5px solid var(--ink);
+  border-left: 0;
+  border-radius: 0 6px 6px 0;
+  margin-left: 26px;
+}
+
+.step[data-self] .stepLine::after {
+  display: none;
+}
+
+/* ---------- Precedence ---------- */
+.precedence {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.layers {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.layer {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  grid-template-areas:
+    "rank name"
+    "rank source"
+    "rank fields";
+  column-gap: var(--space-4);
+  row-gap: 2px;
+  padding: var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.layer[data-top] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent-soft) 40%, #fff);
+}
+
+.layerRank {
+  grid-area: rank;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+
+.layer[data-top] .layerRank {
+  color: var(--accent-ink);
+}
+
+.layerName {
+  grid-area: name;
+  font-weight: 600;
+}
+
+.layerSource {
+  grid-area: source;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.layerFields {
+  grid-area: fields;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.exceptions {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.exceptions > div {
+  display: grid;
+  gap: 2px;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--accent);
+}
+
+.exceptions dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.exceptions dd {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+@media (min-width: 820px) {
+  .precedence {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ---------- Thinking flow ---------- */
+.flow {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stages {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  counter-reset: stage;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.stageIndex {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-ink);
+}
+
+.stageTitle {
+  font-weight: 600;
+}
+
+.stageBody {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+.sideStore {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+.sideLabel {
+  display: inline-block;
+  margin-right: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-ink);
+}
+
+@media (min-width: 820px) {
+  .stages {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .stage:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: calc(var(--space-5) * -0.5);
+    transform: translate(50%, -50%);
+    color: var(--ink-3);
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- Pacing ---------- */
+.pacing {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.pacingNote {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.pacingBar {
+  display: flex;
+  gap: 3px;
+  list-style: none;
+  padding: 0;
+  min-height: 92px;
+}
+
+.pacingBar li {
+  flex-basis: 0;
+  display: grid;
+  align-content: space-between;
+  min-width: 0;
+  padding: var(--space-2) var(--space-2);
+  border-radius: 3px;
+  background: var(--paper-3);
+  border-top: 3px solid var(--ink-3);
+}
+
+.pacingBar li[data-weight="2"] {
+  background: color-mix(in srgb, var(--accent-soft) 55%, var(--paper-2));
+  border-top-color: color-mix(in srgb, var(--accent) 60%, var(--ink-3));
+}
+
+.pacingBar li[data-weight="4"] {
+  background: var(--accent-soft);
+  border-top-color: var(--accent);
+}
+
+.pacingStep {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pacingWeight {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.pacingSeconds {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.pacingAxis {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+
+/* ---------- Wall fade ---------- */
+.wall {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.wallCompact {
+  display: block;
+}
+
+.wallLabels text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-3);
+}
+
+.hysteresis {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.axisText {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ink-3);
+}
+
+.hysteresisNote {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+@media (min-width: 820px) {
+  .wall {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
